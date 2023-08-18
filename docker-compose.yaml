@@ -1,15 +1,14 @@
-version: '3.1'
+version: '3.3'
 
 services:
   postgresql:
     image: postgres
     container_name: pg
     ports:
-      - 5432:5432
+      - 5435:5432
     volumes: 
       - ./Chinook_PostgreSql_utf8.sql:/docker-entrypoint-initdb.d/0_init.sql
-      #- ./pg/data:/var/lib/postgresql/data/
+      - ./data/postgres:/var/lib/postgresql/data 777
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=admin
-      - POSTGRES_DB=test
